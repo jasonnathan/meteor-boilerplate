@@ -1,0 +1,30 @@
+.dashboardLayout {
+    overflow: auto;
+    // background: url("/invite-user.jpg") no-repeat;
+    // background-size: contain;
+    // width:100vw;
+    // height:100vh;
+    .topBar {
+        .navbar-fixed,
+        nav {
+            height: 9vh
+        }
+    }
+    .leftContent {
+        border-right: 1px solid #ccc;
+        padding: 0;
+        &.collection {
+            height: 91vh;
+        }
+    }
+    .main {
+        position: relative;
+        height:91vh;
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .dashboardLayout {
+        padding-left: 13.5vw;
+    }
+}

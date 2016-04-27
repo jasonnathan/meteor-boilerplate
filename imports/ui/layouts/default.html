@@ -1,0 +1,52 @@
+<template name="default">
+    {{#if loggingIn}}
+      <div class="centered-layout">
+        <div class="row">
+            <div class="col s12 m8 l6 offset-m2 offset-l3">
+                <h4 class="light-blue-text text-lighten-1">Logging in...</h4>
+                <p class="text-default grey-text">Please wait a moment while we log you in.</p>
+                {{> centeredCircularLoading}}
+            </div>
+        </div>
+      </div>
+    {{else}}
+      {{#if authenticated}}
+        {{#unless redirectAuthenticated}}
+          <div class="dashboardLayout">
+              <header class="topBar">
+                  {{>Template.dynamic template="topbar"}}
+              </header>
+              {{>Template.dynamic template="leftbar"}}
+              <section class="contentArea">
+                  <div class="row">
+                      {{#unless isDirectory}}
+                      <aside class="leftContent col m5 hide-on-small-only">
+                          {{>Template.dynamic template="leftcontent"}}
+                      </aside>
+                      {{/unless}}
+                      <section class="main col s12 {{mediumGridClass}}">
+                      {{#if authCenteredTemplate}}
+                        <div class="centered-layout">
+                            <div class="row">
+                                {{>Template.dynamic template=authCenteredTemplate}}
+                            </div>
+                        </div>
+                      {{else}}
+                          {{>Template.dynamic template=authTemplate}}
+                      {{/if}}
+                      </section>
+                  </div>
+              </section>
+          </div>
+        {{/unless}}
+      {{else}}
+        {{#unless redirectPublic}}
+          <div class="centered-layout">
+              <div class="row">
+                  {{>Template.dynamic template=pubTemplate}}
+              </div>
+          </div>
+        {{/unless}}
+      {{/if}}
+    {{/if}}
+</template>
